@@ -1,0 +1,14 @@
+inputSet:
+  name: Build_laxingTon_azure_repo_1709269332094-push-trigger-input-set
+  identifier: Build_laxingTon_azure_repo_1709269332094pushtriggerinputset
+  orgIdentifier: default
+  projectIdentifier: harnessazuredeploy
+  pipeline:
+    identifier: Build_laxingTon_azure_repo_1709269332094
+    properties:
+      ci:
+        codebase:
+          build:
+            type: branch
+            spec:
+              branch: <+trigger.branch>
