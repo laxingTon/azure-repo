@@ -1,0 +1,14 @@
+inputSet:
+  name: Build_laxingTon_azure_repo_1709268125006-pr-trigger-input-set
+  identifier: Build_laxingTon_azure_repo_1709268125006prtriggerinputset
+  orgIdentifier: default
+  projectIdentifier: default_project
+  pipeline:
+    identifier: Build_laxingTon_azure_repo_1709268125006
+    properties:
+      ci:
+        codebase:
+          build:
+            type: PR
+            spec:
+              number: <+trigger.prNumber>
