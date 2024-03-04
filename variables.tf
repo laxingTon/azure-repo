@@ -194,15 +194,3 @@ variable "file_destination" {
 }
 
 
-variable "remote_exec_inline" {
-  type        = list(string)
-  description = "list of remote commands execution"
-  default     = ["sudo apt-get update"]
-}
-
-
-variable "local_exec_inline" {
-  type        = string
-  description = "list of local commands execution"
-  default     = "echo  completed >> env_vars.txt"
-}

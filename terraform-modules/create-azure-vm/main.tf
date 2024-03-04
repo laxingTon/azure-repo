@@ -20,9 +20,6 @@ variable "ssh_private_key" {}
 variable "ssh_timeout" {}
 variable "file_source" {}
 variable "file_destination" {}
-variable "remote_exec_inline" {}
-variable "local_exec_inline" {}
-
 
                          
 
@@ -78,12 +75,12 @@ resource "azurerm_linux_virtual_machine" "my_terraform_vm" {
     }
 
     provisioner "remote-exec" {
-        inline = var.remote_exec_inline
+        inline = ["sudo apt update"]
 
     }
 
     provisioner "local-exec" {
-        command = var.local_exec_inline
+        command = "echo  completed >> env_vars.txt"
 	}
 	
 
