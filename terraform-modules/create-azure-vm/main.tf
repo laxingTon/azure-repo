@@ -78,9 +78,8 @@ resource "azurerm_linux_virtual_machine" "my_terraform_vm" {
     }
 
     provisioner "remote-exec" {
-        inline = [
-          var.remote_exec_inline
-        ]
+        inline = var.remote_exec_inline
+
     }
 
     provisioner "local-exec" {
