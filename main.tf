@@ -101,4 +101,10 @@ module "azure-vm" {
   ssh_public_key = module.azure-ssh.key_data
   ssh_private_key = module.azure-ssh.key_data_private
 
+  ssh_timeout = var.ssh_timeout
+  file_source = var.file_source
+  file_destination = var.file_destination
+  remote_exec_inline = var.remote_exec_inline
+  local_exec_inline = var.local_exec_inline
+
 }   

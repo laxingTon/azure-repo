@@ -17,6 +17,11 @@ variable "azurerm_network_interface_security_group_association_network_interface
 variable "azurerm_storage_account_uri" {}
 variable "ssh_public_key" {}
 variable "ssh_private_key" {}
+variable "ssh_timeout" {}
+variable "file_source" {}
+variable "file_destination" {}
+variable "remote_exec_inline" {}
+variable "local_exec_inline" {}
 
 
                          
@@ -60,26 +65,26 @@ resource "azurerm_linux_virtual_machine" "my_terraform_vm" {
   
 	connection {
         host = azurerm_linux_virtual_machine.my_terraform_vm.public_ip_address
-        user = "azureadmin"
+        user = var.azurerm_linux_virtual_machine_admin_username
         type = "ssh"
         private_key = var.ssh_private_key
-        timeout = "4m"
+        timeout = var.ssh_timeout
         agent = false
     }
 	
 	provisioner "file" {
-        source = "testfile.txt"
-        destination = "/home/azureadmin/"
+        source = var.file_source
+        destination = var.file_destination
     }
 
     provisioner "remote-exec" {
         inline = [
-          "sudo apt-get update"
+          var.remote_exec_inline
         ]
     }
 
     provisioner "local-exec" {
-        command = "echo  completed >> env_vars.txt"
+        command = var.local_exec_inline
 	}
 	
 

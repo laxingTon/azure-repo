@@ -16,13 +16,6 @@ variable "resource_group_location" {
   type = map(string)
   default = {
     "US" = "eastus"
-    "london"    = "uk-lon1"
-    "frankfurt" = "de-fra1"
-    "helsinki1" = "fi-hel1"
-    "helsinki2" = "fi-hel2"
-    "chicago"   = "us-chi1"
-    "sanjose"   = "us-sjo1"
-    "singapore" = "sg-sin1"
   }
   description = "Location of the resource group."
 }
@@ -178,3 +171,38 @@ variable "azurerm_linux_virtual_machine_admin_username" {
   default     = "azureadmin"
 }
 
+
+
+variable "ssh_timeout" {
+  type        = string
+  description = "timeout for ssh."
+  default     = "4m"
+}
+
+
+variable "file_source" {
+  type        = string
+  description = "source file"
+  default     = "testfile.txt"
+}
+
+
+variable "file_destination" {
+  type        = string
+  description = "file destination"
+  default     = "/home/azureadmin/"
+}
+
+
+variable "remote_exec_inline" {
+  type        = list(string)
+  description = "list of remote commands execution"
+  default     = ["sudo apt-get update"]
+}
+
+
+variable "local_exec_inline" {
+  type        = string
+  description = "list of local commands execution"
+  default     = "echo  completed >> env_vars.txt"
+}
